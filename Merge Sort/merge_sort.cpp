@@ -1,6 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include "merge_sort.h"
 
+// Merge two sorted subarrays
 void merge(long long int array[], int const left, int const mid, int const right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -39,6 +39,8 @@ void merge_sort(long long int array[], int const begin, int const end) {
     merge_sort(array, mid + 1, end);
     merge(array, begin, mid, end);
 }
+
+
 
 
 
