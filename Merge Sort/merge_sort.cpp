@@ -2,6 +2,7 @@
 using namespace std;
 
 void merge(long long int array[], int const left, int const mid, int const right) {
+    void merge(long long int array[], int const left, int const mid, int const right) {
     int s1 = mid - left + 1;
     int s2 = right - mid;
 
@@ -13,31 +14,17 @@ void merge(long long int array[], int const left, int const mid, int const right
     for (int j = 0; j < s2; j++)
         a2[j] = array[mid + 1 + j];
 
-    int i = 0, j = 0;
-    int k = left;
+    int i = 0, j = 0, k = left;
 
     while (i < s1 && j < s2) {
-        if (a1[i] <= a2[j]) {
-            array[k] = a1[i];
-            i++;
-        } else {
-            array[k] = a2[j];
-            j++;
-        }
-        k++;
+        if (a1[i] <= a2[j])
+            array[k++] = a1[i++];
+        else
+            array[k++] = a2[j++];
     }
 
-    while (i < s1) {
-        array[k] = a1[i];
-        i++;
-        k++;
-    }
-
-    while (j < s2) {
-        array[k] = a2[j];
-        j++;
-        k++;
-    }
+    while (i < s1) array[k++] = a1[i++];
+    while (j < s2) array[k++] = a2[j++];
 
     delete[] a1;
     delete[] a2;
@@ -52,6 +39,7 @@ void merge_sort(long long int array[], int const begin, int const end) {
     merge_sort(array, m + 1, end);
     merge(array, begin, m, end);
 }
+
 
 
 
