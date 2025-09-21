@@ -46,15 +46,15 @@ void merge(long long int array[], int const left, int const mid, int const right
 
 void merge_sort(long long int array[], int const begin, int const end)
 {
-   if(begin >= end){
-       return;
-   }
-   
-   int mid = begin + (end - begin) / 2;
-   merge_sort(array, begin, mid);
-   merge_sort(array, mid + 1, end);
-   merge(array, begin, mid, end);
+   if (begin >= end)
+        return;
+
+    int m = begin + (end - begin) / 2;
+    merge_sort(array, begin, m);
+    merge_sort(array, m + 1, end);
+    merge(array, begin, m, end);
 }
+
 
 
 
