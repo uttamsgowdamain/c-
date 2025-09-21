@@ -3,46 +3,46 @@ using namespace std;
 
 void merge(long long int array[], int const left, int const mid, int const right) 
 {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+    int s1 = mid - left + 1;
+    int s2 = right - mid;
 
-    long long int *L = new long long int[n1];
-    long long int *R = new long long int[n2];
-    
-    for (int i = 0; i < n1; i++) {
-        L[i] = array[left + i];
-    }
-    for (int j = 0; j < n2; j++) {
-        R[j] = array[mid + 1 + j];
-    }
+    long long int *a1 = new long long int[s1];
+    long long int *a2 = new long long int[s2];
 
-    int i = 0, j = 0, k = left;
+    for (int i = 0; i < s1; i++)
+        a1[i] = array[left + i];
+    for (int j = 0; j < s2; j++)
+        a2[j] = array[mid + 1 + j];
 
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            array[k] = L[i];
+    int i = 0; 
+    int j = 0; 
+    int k = left;
+
+    while (i < s1 && j < s2) {
+        if (a1[i] <= a2[j]) {
+            array[k] = a1[i];
             i++;
         } else {
-            array[k] = R[j];
+            array[k] = a2[j];
             j++;
         }
         k++;
     }
 
-    while (i < n1) {
-        array[k] = L[i];
+    while (i < s1) {
+        array[k] = a1[i];
         i++;
         k++;
     }
 
-    while (j < n2) {
-        array[k] = R[j];
+    while (j < s2) {
+        array[k] = a2[j];
         j++;
         k++;
     }
 
-    delete[] L;
-    delete[] R;
+    delete[] a1;
+    delete[] a2;
 }
 
 void merge_sort(long long int array[], int const begin, int const end)
@@ -56,6 +56,7 @@ void merge_sort(long long int array[], int const begin, int const end)
    merge_sort(array, mid + 1, end);
    merge(array, begin, mid, end);
 }
+
 
 
 
