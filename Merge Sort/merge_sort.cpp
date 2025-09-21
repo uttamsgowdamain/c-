@@ -5,7 +5,6 @@ void merge(long long int array[], int const left, int const mid, int const right
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    // Dynamic allocation
     long long int* L = new long long int[n1];
     long long int* R = new long long int[n2];
 
@@ -23,8 +22,10 @@ void merge(long long int array[], int const left, int const mid, int const right
             array[k++] = R[j++];
     }
 
-    while (i < n1) array[k++] = L[i++];
-    while (j < n2) array[k++] = R[j++];
+    while (i < n1)
+        array[k++] = L[i++];
+    while (j < n2)
+        array[k++] = R[j++];
 
     delete[] L;
     delete[] R;
@@ -38,6 +39,7 @@ void merge_sort(long long int array[], int const begin, int const end) {
     merge_sort(array, mid + 1, end);
     merge(array, begin, mid, end);
 }
+
 
 
 
