@@ -3,8 +3,8 @@ using namespace std;
 
 void merge(long long int array[], int const left, int const mid, int const right) 
 {
-    int s1 = mid - left + 1;
-    int s2 = right - mid;
+    auto const s1 = mid - left + 1;
+    auto const s2 = right - mid;
 
     long long int *a1 = new long long int[s1];
     long long int *a2 = new long long int[s2];
@@ -14,8 +14,7 @@ void merge(long long int array[], int const left, int const mid, int const right
     for (int j = 0; j < s2; j++)
         a2[j] = array[mid + 1 + j];
 
-    int i = 0; 
-    int j = 0; 
+    int i = 0, j = 0;
     int k = left;
 
     while (i < s1 && j < s2) {
@@ -56,6 +55,7 @@ void merge_sort(long long int array[], int const begin, int const end)
    merge_sort(array, mid + 1, end);
    merge(array, begin, mid, end);
 }
+
 
 
 
